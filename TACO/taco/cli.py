@@ -1,4 +1,4 @@
-"""Command line for the paper benchmarks."""
+"""Command line."""
 
 import argparse
 
@@ -6,7 +6,7 @@ from taco.evaluate import SPECS, run_benchmark
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Evaluate TACO on a paper benchmark.")
+    parser = argparse.ArgumentParser(description="Evaluate a TACO benchmark.")
     parser.add_argument("--benchmark", required=True, choices=sorted(SPECS))
     parser.add_argument("--runs", type=int, default=3, help="Random initializations. The seed is not reset between them.")
     parser.add_argument("--limit", type=int, default=None, help="Evaluate only the first N samples.")

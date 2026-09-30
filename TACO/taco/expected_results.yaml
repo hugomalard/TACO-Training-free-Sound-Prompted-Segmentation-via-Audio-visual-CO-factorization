@@ -1,4 +1,4 @@
-# Means and standard deviations reported in the paper.
+# Reference means and standard deviations.
 # Scores are percentages. The checker allows max(2 * std, 1.0) around each mean.
 s4:
   miou: {mean: 64.04, std: 0.25}

@@ -1,4 +1,4 @@
-"""Frozen CLAP, OpenCLIP, and FC-CLIP used by every benchmark."""
+"""Frozen CLAP, OpenCLIP, and FC-CLIP."""
 
 from types import SimpleNamespace
 
@@ -99,13 +99,13 @@ def _build_fcclip(paths):
     DetectionCheckpointer(model, save_dir=cfg.OUTPUT_DIR).resume_or_load(
         cfg.MODEL.WEIGHTS, resume=args.resume
     )
-    # The paper scripts flip only the root flag. Inference branches on it.
+    # Inference branches on this flag.
     model.training = False
     return model
 
 
 def _patch_msclap_tokens():
-    """Stock msclap 1.3.3 omits the pre-pool HTS-AT sequence. The fcclip2 copy returns it as ``tokens``."""
+    """Add the pre-pool HTS-AT sequence to the CLAP output as ``tokens`` when it is missing."""
     from msclap.models.htsat import HTSAT_Swin_Transformer
 
     if getattr(HTSAT_Swin_Transformer, "_taco_tokens", False):

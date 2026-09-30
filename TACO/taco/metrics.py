@@ -1,4 +1,4 @@
-"""Segmentation metrics used by the paper tables."""
+"""Segmentation metrics."""
 
 from typing import Dict, List, Tuple
 
@@ -28,7 +28,7 @@ class Evaluator(object):
     """AVSBench thresholded mIoU and F-measure.
 
     F-measure is aggregated over the whole set before the precision-recall
-    threshold is chosen, matching the batch-independent fix in the original code.
+    threshold is chosen.
     """
 
     def __init__(self) -> None:
@@ -174,7 +174,7 @@ def per_class_detection_scores(predictions, targets, class_ids):
 
 
 def batch_miou_fscore(output, target, nclass, beta2=0.3):
-    """Histogram mIoU and F-score used for semantic sound-prompted segmentation."""
+    """Histogram mIoU and F-score for semantic segmentation."""
     mini = 1
     maxi = nclass
     nbins = nclass

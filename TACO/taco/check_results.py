@@ -1,4 +1,4 @@
-"""Compare a benchmark JSON file with the numbers reported in the paper."""
+"""Compare a benchmark JSON file with the stored reference numbers."""
 
 import argparse
 import json
@@ -20,7 +20,7 @@ def compare_results(results, expected=None):
     expected = load_expected() if expected is None else expected
     name = results["benchmark"]
     if name not in expected:
-        return [f"No paper numbers stored for benchmark {name}"]
+        return [f"No reference numbers stored for benchmark {name}"]
     failures = []
     for metric, target in expected[name].items():
         if metric not in results["mean"]:
@@ -30,14 +30,14 @@ def compare_results(results, expected=None):
         tolerance = max(2 * float(target["std"]), 1.0)
         if abs(got - float(target["mean"])) > tolerance:
             failures.append(
-                f"{name}.{metric}: got {got:.2f}, paper {target['mean']} ± {target['std']} "
+                f"{name}.{metric}: got {got:.2f}, reference {target['mean']} ± {target['std']} "
                 f"(tolerance {tolerance:.2f})"
             )
     return failures
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Check TACO results against the paper.")
+    parser = argparse.ArgumentParser(description="Check TACO results against the stored reference numbers.")
     parser.add_argument("results", help="JSON written by python -m taco.eval")
     parser.add_argument("--expected", default=None, help="Optional expected-results YAML")
     args = parser.parse_args(argv)
@@ -49,7 +49,7 @@ def main(argv=None):
         for failure in failures:
             print(failure)
         raise SystemExit(1)
-    print(f"{results['benchmark']} matches the paper within tolerance.")
+    print(f"{results['benchmark']} matches the reference within tolerance.")
 
 
 if __name__ == "__main__":

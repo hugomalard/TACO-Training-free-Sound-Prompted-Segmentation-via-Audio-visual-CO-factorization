@@ -1,4 +1,4 @@
-"""Run one paper benchmark and summarize repeated random initializations."""
+"""Run one benchmark and summarize repeated random initializations."""
 
 import json
 import random

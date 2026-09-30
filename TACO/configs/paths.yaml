@@ -1,4 +1,4 @@
-# Laboratory paths used for the paper. Override any entry for another machine.
+# Dataset and checkpoint paths. Override any entry for another machine.
 avsbench_metadata: /tsi/dcase/avsbench/metadataExtended.csv
 avsbench_root: /tsi/dcase/avsbench
 # AudioSet/metadata.csv is not on this cluster. Labels are the 527 class names

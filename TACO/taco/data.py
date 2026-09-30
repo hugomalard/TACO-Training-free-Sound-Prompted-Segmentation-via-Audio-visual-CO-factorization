@@ -1,4 +1,4 @@
-"""Dataset readers for the five paper benchmarks."""
+"""Dataset readers."""
 
 import json
 import os

@@ -1,7 +1,7 @@
-"""Semantically constrained audio-visual co-factorization.
+"""Audio-visual co-factorization.
 
-The updates follow the paper runs: sigmoid activations, a cross-entropy penalty on
-the closest factor, and optional temporal cosine coupling of consecutive frames.
+Sigmoid activations, a cross-entropy penalty on the closest factor, and an
+optional temporal cosine penalty between consecutive frames.
 """
 
 import torch
@@ -136,8 +136,7 @@ def conmf_txt(
         error.sum().backward()
         _gd_step((image_w, audio_w, image_h, audio_h), lr, positivity)
 
-    # Activations and the chosen index are those of the last forward, before the
-    # final parameter update, which is what the original loop returns.
+    # Last forward pass, before the gradient step.
     chosen = image_ce.argmin(dim=1)
     return image_act, image_h, audio_act, audio_h, chosen, image_ce
 
@@ -160,7 +159,7 @@ def conmf_bary(
     """Co-factorize against precomputed CLAP/CLIP barycenters.
 
     Audio components are compared in token space, without the CLAP projection.
-    ``b5`` is accepted so call sites can keep the original argument list.
+    ``b5`` is unused.
     """
     del b5
     batch = image_tokens.shape[0]
@@ -191,7 +190,7 @@ def conmf_bary(
             audio_component.flatten(0, 1), text_audio, logit_scale
         )
         image_sim = get_closest(image_component.flatten(0, 1), text_image).T
-        # Computed in the original loop. They are not part of the objective.
+        # Computed and discarded.
         get_closest(image_h.flatten(0, 1), text_image)
         compute_clap_similarity(audio_h.flatten(0, 1), text_audio, logit_scale)
         image_ce, image_penalty, audio_penalty = _closest_factor_loss(
