@@ -1,0 +1,18 @@
+# Laboratory paths used for the paper. Override any entry for another machine.
+avsbench_metadata: /tsi/dcase/avsbench/metadataExtended.csv
+avsbench_root: /tsi/dcase/avsbench
+# AudioSet/metadata.csv is not on this cluster. Labels are the 527 class names
+# in first-seen order from AudioSet/metadata.parquet.
+audioset_metadata: /home/ids/hmalard/TACO2/TACO/configs/audioset_labels.csv
+ade_metadata: /tsi/dcase/ADE20KSoundPrompted/ADE20KSoundPrompted/test_metadata.csv
+ade_frames: /tsi/dcase/ADE20KSoundPrompted/ADE20KSoundPrompted/frames
+ade_annotations: /tsi/dcase/ADE20KSoundPrompted/ADE20KSoundPrompted/annotations
+vggsound_root: /tsi/dcase/VGGSound
+avss_metadata: /tsi/dcase/avsbench_semantic/metadataExtendedTest.csv
+avss_root: /tsi/dcase/avsbench_semantic
+avss_label2idx: /tsi/dcase/avsbench_semantic/label2idx.json
+fcclip_config: configs/coco/panoptic-segmentation/fcclip/fcclip_convnext_large_eval_ade20k.yaml
+fcclip_weights: /home/ids/hmalard/fcclip_cocopan.pth
+bary_audio: /home/ids/hmalard/baryAVSAudioFull350.pt
+bary_image: /home/ids/hmalard/baryAVSImage350fullt.pt
+openclip: hf-hub:laion/CLIP-convnext_large_d_320.laion2B-s29B-b131K-ft-soup

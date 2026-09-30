@@ -1,0 +1,23 @@
+# Means and standard deviations reported in the paper.
+# Scores are percentages. The checker allows max(2 * std, 1.0) around each mean.
+s4:
+  miou: {mean: 64.04, std: 0.25}
+  fscore: {mean: 71.50, std: 0.20}
+  miou_u: {mean: 29.68, std: 0.16}
+  fscore_u: {mean: 41.91, std: 0.09}
+ms3:
+  miou: {mean: 43.15, std: 0.91}
+  fscore: {mean: 47.5, std: 0.95}
+  miou_u: {mean: 25.88, std: 0.91}
+  fscore_u: {mean: 30.72, std: 0.95}
+ade_sp:
+  miou: {mean: 51.57, std: 0.86}
+  map: {mean: 60.01, std: 1.38}
+  miou_u: {mean: 27.74, std: 0.48}
+  map_u: {mean: 35.75, std: 0.33}
+avss:
+  miou: {mean: 20.50, std: 0.10}
+  fscore: {mean: 23.02, std: 0.09}
+ade_sp_semantic:
+  miou: {mean: 37.70, std: 1.61}
+  fscore: {mean: 44.39, std: 1.92}

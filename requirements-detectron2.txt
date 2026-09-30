@@ -1,0 +1,8 @@
+# Install after requirements.txt, with CUDA 12.1 nvcc and GCC 12 on PATH
+# (module load cuda/12.1 gcc/12.5.0). CUDA 12.1 rejects GCC 14.
+#   TORCH_CUDA_ARCH_LIST="8.0;9.0" FORCE_CUDA=1 pip install --no-build-isolation -r requirements-detectron2.txt
+# --no-build-isolation is required because both packages import torch while they build.
+# FORCE_CUDA=1 compiles CUDA extensions on a machine with no GPU.
+# TORCH_CUDA_ARCH_LIST selects A100 (8.0) and H100 (9.0) when no device is visible.
+git+https://github.com/facebookresearch/detectron2.git@5b72c27ae39f99db75d43f18fd1312e1ea934e60
+./fcclip/modeling/pixel_decoder/ops
