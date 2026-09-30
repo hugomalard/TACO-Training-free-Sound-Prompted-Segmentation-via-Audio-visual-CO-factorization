@@ -4,7 +4,7 @@ Here is the code to reproduce the evaluations of _TACO_ 🌮. Dataset and checkp
 
 ## Environment
 
-Python 3.8. CUDA 12.1 and GCC 12 need to be available (`module load cuda/12.1 gcc/12.5.0` on this cluster). From the repository root:
+Python 3.8. CUDA 12.1 and GCC 12 need to be available. From the repository root:
 
 ```bash
 python3.8 -m venv .venv
